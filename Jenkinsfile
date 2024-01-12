@@ -7,6 +7,7 @@ pipeline {
        stage('Build') {
            steps {
 	       sh 'docker image build -t ${IMAGE}:0.01 .'
+	       sh 'docker tag ${IMAGE} salman1091/${IMAGE}:0.01'
            }
        }
        stage('push to docker hub') {
