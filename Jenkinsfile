@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE='my-flask-app'
-	TAG='latest'
+	TAG='v1'
     }
    stages {
        stage('Build') {
