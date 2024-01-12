@@ -11,7 +11,7 @@ pipeline {
        }
        stage('push to docker hub') {
            steps {
-	       withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUsername')]) {
+	       withDockerRegistry([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUsername')]) {
                
 	       sh 'docker push salman1091/${IMAGE}:0.01'
 	       }
