@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    environment {
-        //IMAGE='my-flask-app'
-    }
+   
    stages {
        stage('Build') {
            steps {
