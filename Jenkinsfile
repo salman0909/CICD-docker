@@ -24,7 +24,7 @@ pipeline {
        }
        stage('Run container on Jenkins Agent') {
            steps {
-	       sh 'docker container run -d -p 8082:82 $dockerImageTag"'
+	       sh 'docker container run -d -p 8082:82 $dockerImageTag'
           }
        } 
    }
