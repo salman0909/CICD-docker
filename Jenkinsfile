@@ -1,13 +1,14 @@
 pipeline {
     agent any
     environment {
-        IMAGE='my-flask-app'
+        //IMAGE='my-flask-app'
     }
    stages {
        stage('Build') {
            steps {
-	       sh 'docker image build -t ${IMAGE}:0.01 .'
-	       sh 'docker tag ${IMAGE} salman1091/${IMAGE}:0.01'
+	       sh 'docker login'
+	       sh 'docker image build -t my-flask-app:0.01 .'
+	       sh 'docker tag ${IMAGE} salman1091/my-flask-app:0.01'
            }
        }
        stage('push to docker hub') {
