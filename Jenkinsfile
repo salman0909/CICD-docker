@@ -1,21 +1,26 @@
 pipeline {
     agent any
+	environment {
+        dockerhubCredentials = 'dockerhub-credentials'
+        dockerImageTag = "salman1091/my-flask-app:0.01"
+    }
    
    stages {
        stage('Build') {
            steps {
 	       sh 'docker login'
-	       sh 'docker image build -t my-flask-app:0.01 .'
+	       sh "docker build -t $dockerImageTag ."
 	       //sh 'docker tag  salman1091/my-flask-app'
            }
        }
-       stage('push to docker hub') {
-           steps {
-	       withDockerRegistry([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUsername')]) {
-               
-	       sh 'docker push salman1091/${IMAGE}:0.01'
-	       }
-           }
+       stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('', dockerhubCredentials) {
+                        sh "docker push $dockerImageTag"
+                    }
+                }
+            }
        }
        stage('Run container on Jenkins Agent') {
            steps {
