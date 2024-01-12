@@ -6,7 +6,7 @@ pipeline {
            steps {
 	       sh 'docker login'
 	       sh 'docker image build -t my-flask-app:0.01 .'
-	       sh 'docker tag ${IMAGE} salman1091/my-flask-app:0.01'
+	       sh 'docker tag  salman1091/my-flask-app:0.01'
            }
        }
        stage('push to docker hub') {
