@@ -15,6 +15,7 @@ pipeline {
 	       withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUsername')]) {
                
 	       sh 'docker push salman1091/${IMAGE}:{TAG}'
+	       }
            }
        }
        stage('Run container on Jenkins Agent') {
