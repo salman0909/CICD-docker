@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	environment {
-        dockerhubCredentials = 'dockerhub-credentials'
+        dockerhubCredentials = 'dockerhub'
         dockerImageTag = "salman1091/my-flask-app:0.01"
     }
    
