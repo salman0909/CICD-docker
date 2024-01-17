@@ -8,7 +8,7 @@ pipeline {
    stages {
        stage('Build') {
            steps {
-	       sh 'docker login'
+	       //sh 'docker login'
 	       sh "docker build -t $dockerImageTag ."
 	       //sh 'docker tag  salman1091/my-flask-app'
            }
